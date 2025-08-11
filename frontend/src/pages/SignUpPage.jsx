@@ -49,7 +49,7 @@ const SignUpPage = () => {
           {/* ERROR MESSAGE IF ANY */}
           {error && (
             <div className="alert alert-error mb-4">
-              <span>{error.response.data.message}</span>
+              <span>{error?.response?.data?.message || error?.message || "Something went wrong"}</span>
             </div>
           )}
 
@@ -75,6 +75,7 @@ const SignUpPage = () => {
                       className="input input-bordered w-full"
                       value={signupData.fullName}
                       onChange={(e) => setSignupData({ ...signupData, fullName: e.target.value })}
+                      autoComplete="name"
                       required
                     />
                   </div>
@@ -89,6 +90,7 @@ const SignUpPage = () => {
                       className="input input-bordered w-full"
                       value={signupData.email}
                       onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
+                      autoComplete="email"
                       required
                     />
                   </div>
@@ -103,6 +105,7 @@ const SignUpPage = () => {
                       className="input input-bordered w-full"
                       value={signupData.password}
                       onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
+                      autoComplete="new-password"
                       required
                     />
                     <p className="text-xs opacity-70 mt-1">

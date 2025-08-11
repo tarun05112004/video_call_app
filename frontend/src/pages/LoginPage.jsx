@@ -47,7 +47,7 @@ const LoginPage = () => {
           {/* ERROR MESSAGE DISPLAY */}
           {error && (
             <div className="alert alert-error mb-4">
-              <span>{error.response.data.message}</span>
+              <span>{error?.response?.data?.message || error?.message || "Something went wrong"}</span>
             </div>
           )}
 
@@ -72,6 +72,7 @@ const LoginPage = () => {
                       className="input input-bordered w-full"
                       value={loginData.email}
                       onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
+                      autoComplete="email"
                       required
                     />
                   </div>
@@ -86,6 +87,7 @@ const LoginPage = () => {
                       className="input input-bordered w-full"
                       value={loginData.password}
                       onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+                      autoComplete="current-password"
                       required
                     />
                   </div>

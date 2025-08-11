@@ -42,8 +42,9 @@ const ChatPage = () => {
 
       try {
         console.log("Initializing stream chat client...");
+        console.log("Frontend Stream API Key:", import.meta.env.VITE_STREAM_API_KEY); // Added for debugging
 
-        const client = StreamChat.getInstance(STREAM_API_KEY);
+        const client = StreamChat.getInstance(import.meta.env.VITE_STREAM_API_KEY);
 
         await client.connectUser(
           {
